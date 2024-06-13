@@ -2,9 +2,14 @@ FROM php:8.3-apache
 COPY . /var/www/html
 WORKDIR /var/www/html
 RUN rm -rf vendor
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+WORKDIR /var/www/html
+COPY composer.json composer.lock ./
+RUN composer install --no-scripts --no-autoloader
+COPY . .
+RUN chown -R www-data:www-data /var/www/html
 ENV PATH=$PATH:/usr/local/bin
-RUN echo '{"require": {"monolog/monolog": "2.0.*"}}' > composer.json
 RUN composer update --no-cache
 RUN composer dump-autoload
 EXPOSE 80
