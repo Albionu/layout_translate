@@ -1,24 +1,28 @@
 <?php
 
-var_dump(getcwd());
+require_once  "vendor/autoload.php";
 
-var_dump(dirname(__FILE__));
+use TelegramSDK\BotAPI\Telegram\{Bot, Update};
 
-$file_path = '/var/www/html/vendor/symfony/polyfill-mbstring/bootstrap.php';
+$bot = new Bot("7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM", Update::UPDATES_FROM_WEBHOOK);
 
-if (!file_exists($file_path)) {
-    echo "File $file_path does not exist.";
-    exit;
+$update = $bot->updates();
+
+if(isset($update->update_id)) {
+    
+    if(isset($update->message)) {
+        $chat = $update->getChat();
+        
+        $bot->copyMessage([
+          "chat_id" => $chat->id,
+          "from_chat_id" => $chat->id,
+          "message_id" => $update->getMessage()->message_id
+        ]);
+    }
+    
+} else {
+    echo "No updates from telegram where found.\n";
 }
-
-if (!is_readable($file_path)) {
-    echo "File $file_path is not readable.";
-    exit;
-}
-
-require_once $file_path;
-
-require_once 'vendor/autoload.php';
 
 //use Telegram\Bot\Api;
 //
