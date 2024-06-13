@@ -5,7 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "8467ff46c4b5969a0809c62007502ab4",
-    "packages":
+    "packages":[
         {
             "name": "guzzlehttp/promises",
             "version": "2.0.2",
