@@ -1,6 +1,8 @@
 <?php
 
-var_dump(dir());
+var_dump(getcwd());
+
+var_dump(dirname(__FILE__));
 
 require_once './vendor/autoload.php';
 
