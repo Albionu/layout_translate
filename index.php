@@ -1,5 +1,7 @@
 <?php
 
+var_dump(dir());
+
 require_once './vendor/autoload.php';
 
 use Telegram\Bot\Api;
