@@ -1,6 +1,6 @@
 FROM php:8.3-apache
-LABEL authors="BN"
-COPY . /var/www/html
 WORKDIR /var/www/html
+COPY . /var/www/html
 EXPOSE 80
-ENTRYPOINT ["top", "-b"]
+RUN chown -R www-data:www-data /var/www/html
+CMD ["apache2ctl", "-D", "FOREGROUND"]
