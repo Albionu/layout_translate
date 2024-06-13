@@ -4,7 +4,7 @@ var_dump(getcwd());
 
 var_dump(dirname(__FILE__));
 
-$file_path = '/var/www/html/vendor/composer/../symfony/polyfill-mbstring/bootstrap.php';
+$file_path = '/var/www/html/vendor/symfony/polyfill-mbstring/bootstrap.php';
 
 if (!file_exists($file_path)) {
     echo "File $file_path does not exist.";
