@@ -1,12 +1,18 @@
 <?php
-echo phpinfo();
 
-$ruStrng = 'йцукенгшщзхъфывапролджэячсмитьбю.';
-$engStrng = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
+require_once 'vendor/autoload.php';
 
+use Telegram\Bot\Api;
 
+$telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
+//$result = $telegram->getUpdates();
 
-function translate ($map, $haystack, $needle) : string {
-    
-    return $res;
+$id = $telegram->getChat()->id;
+
+function ruToEnLayout($text) : string {
+    $ru = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'];
+    $en = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
+    return str_replace($ru, $en, $text);
 }
+
+$telegram->sendMessage(['id' => $id,'text' => 'text']);
