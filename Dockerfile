@@ -1,4 +1,5 @@
-FROM alvistack/php-8.3-fpm
+FROM php:8.3-apache
 LABEL authors="BN"
-
+COPY . /var/www/html
+WORKDIR /var/www/html
 ENTRYPOINT ["top", "-b"]
