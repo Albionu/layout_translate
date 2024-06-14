@@ -3,4 +3,3 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["sh", "/home/script.sh"]
 COPY . /var/www/html
 WORKDIR /var/www/html
-EXPOSE 80
