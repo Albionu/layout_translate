@@ -5,6 +5,7 @@ require_once  "vendor/autoload.php";
 use Telegram\Bot\Api;
 
 $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
+$me = $telegram->getChat();
 
 try {
     $updates = $telegram->getWebhookUpdate();
@@ -16,9 +17,9 @@ try {
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
 } catch (\Telegram\Bot\Exceptions\TelegramSDKException $e) {
-    file_put_contents('output.txt', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
+    file_put_contents('output.txt', "Error: " . 'не отправилося' . "\n", FILE_APPEND);
 } catch (Exception $e) {
-    file_put_contents('output.txt', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
+    file_put_contents('output.txt', "Error: " . 'вообще треш' . "\n", FILE_APPEND);
 }
 
 
