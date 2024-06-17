@@ -8,14 +8,13 @@ $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 
 $updates = $telegram->getWebhookUpdate();
 
-$message = $updates->getMessage();
+$message = $updates->getMessage()->get('text');
 
 $id = $updates->getChat()->get('chat_id');
 
-
 $response = $telegram->sendMessage([
   'chat_id' => $id,
-  'text' => 'Hello World'
+  'text' => $message
 ]);
 
 
