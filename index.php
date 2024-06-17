@@ -17,9 +17,9 @@ try {
     
     $id = $chat->id;
     
-    $is_forwarded = true;
+    $is_forwarded = false;
     
-    if($message->get('forward_origin'))
+    if($message->has('forward_from'))
         $is_forwarded = true;
     
     $response = $telegram->sendMessage([
