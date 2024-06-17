@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52595b44c995ed3fc6d241f2a06b1878",
+    "content-hash": "2debc53f331d88ed4e084b1bfd7b5d10",
     "packages": [
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1811,62 +1811,6 @@
                 }
             ],
             "time": "2022-06-27T17:10:44+00:00"
-        },
-        {
-            "name": "telegramsdk/botapi",
-            "version": "v2.1.15",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TelegramSDK/BotAPI.git",
-                "reference": "fa9e2669b4af973e856cbaf21c53a24b216fbc13"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TelegramSDK/BotAPI/zipball/fa9e2669b4af973e856cbaf21c53a24b216fbc13",
-                "reference": "fa9e2669b4af973e856cbaf21c53a24b216fbc13",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^7.7",
-                "php": ">=8.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.46",
-                "pestphp/pest": "^2.8"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastiano Racca",
-                    "email": "sebastiano@racca.me",
-                    "homepage": "https://github.com/SebaOfficial",
-                    "role": "Developer"
-                }
-            ],
-            "description": "SDK for the Telegram Bot API.",
-            "homepage": "https://github.com/TelegramSDK/BotAPI",
-            "keywords": [
-                "TelegramSDK",
-                "api",
-                "bot",
-                "library",
-                "sdk",
-                "telegram"
-            ],
-            "support": {
-                "issues": "https://github.com/TelegramSDK/BotAPI/issues",
-                "source": "https://github.com/TelegramSDK/BotAPI/tree/v2.1.15"
-            },
-            "time": "2024-05-13T17:34:54+00:00"
         },
         {
             "name": "voku/portable-ascii",
