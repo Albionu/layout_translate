@@ -16,9 +16,9 @@ try {
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
 } catch (\Telegram\Bot\Exceptions\TelegramSDKException $e) {
-    file_put_contents('output.txt', "Error: " . 'не отправилося' . "\n", FILE_APPEND);
+    file_put_contents('output.txt', "Error: " . 'not sent' . "\n", FILE_APPEND);
 } catch (Exception $e) {
-    file_put_contents('output.txt', "Error: " . 'вообще треш' . "\n", FILE_APPEND);
+    file_put_contents('output.txt', "Error: " . 'trash' . "\n", FILE_APPEND);
 }
 file_put_contents('output.txt', "Запросец пришёл " . date('u') . '\n', FILE_APPEND);
 
