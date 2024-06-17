@@ -6,23 +6,22 @@ use Telegram\Bot\Api;
 
 $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 
-$updates = $telegram->getWebhookUpdate();
-
-$message = $updates->getMessage()->get('text');
-
-$chat = $updates->getMessage()->get('chat');
-
-file_put_contents('output.txt', print_r($chat, 1), FILE_APPEND);
-
-$id = $chat->id;
-
 try {
+    $updates = $telegram->getWebhookUpdate();
+    $message = $updates->getMessage()->get('text');
+    $chat = $updates->getMessage()->get('chat');
+    $id = $chat->id;
+    
     $response = $telegram->sendMessage([
       'chat_id' => $id,
       'text' => $message
     ]);
+    
+    file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
 } catch (\Telegram\Bot\Exceptions\TelegramSDKException $e) {
-    file_put_contents('output.txt', print_r($chat, 1), FILE_APPEND);
+    file_put_contents('output.txt', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
+} catch (Exception $e) {
+    file_put_contents('output.txt', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
 }
 
 
