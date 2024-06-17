@@ -7,3 +7,6 @@ RUN php composer.phar install
 RUN chown -R www-data:www-data /var/www/html
 CMD ["apache2ctl", "-D", "FOREGROUND"]
 EXPOSE 80
+EXPOSE 443
+EXPOSE 88
+EXPOSE 8443
