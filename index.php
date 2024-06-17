@@ -20,7 +20,7 @@ try {
 } catch (Exception $e) {
     file_put_contents('output.txt', "Error: " . 'trash' . "\n", FILE_APPEND);
 }
-file_put_contents('output.txt', "Request getten " . date('u') . '\n', FILE_APPEND);
+file_put_contents('output.txt', "Request getten " . date('u') . "\n", FILE_APPEND);
 
 //use Telegram\Bot\Api;
 //
