@@ -5,14 +5,13 @@ require_once  "vendor/autoload.php";
 use Telegram\Bot\Api;
 
 $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
-$me = $telegram->getChat();
 
 try {
     $updates = $telegram->getWebhookUpdate();
     
     $response = $telegram->sendMessage([
       'chat_id' => 1311951933,
-      'text' => date(),
+      'text' => 'date ' . date('u'),
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
@@ -21,7 +20,7 @@ try {
 } catch (Exception $e) {
     file_put_contents('output.txt', "Error: " . 'вообще треш' . "\n", FILE_APPEND);
 }
-file_put_contents('output.txt', "Запросец пришёл " . date() . '\n', FILE_APPEND);
+file_put_contents('output.txt', "Запросец пришёл " . date('u') . '\n', FILE_APPEND);
 
 //use Telegram\Bot\Api;
 //
