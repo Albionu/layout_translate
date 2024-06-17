@@ -17,6 +17,8 @@ try {
     
     $id = $chat->id;
     
+    $is_forwarded = false;
+    
     if($message->get('forward_origin'))
         $is_forwarded = true;
     
