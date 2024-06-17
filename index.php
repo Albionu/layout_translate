@@ -13,11 +13,13 @@ try {
     
     $chat = $message->get('chat');
     
+    $text = $message->get('text');
+    
     $id = $chat->id;
     
     $response = $telegram->sendMessage([
-      'chat_id' => 1311951933,
-      'text' => $id,
+      'chat_id' => $id,
+      'text' => ruToEnLayout($text),
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
@@ -28,14 +30,8 @@ try {
 }
 file_put_contents('output.txt', "Request getten " . rand(0, PHP_INT_MAX) . "\n", FILE_APPEND);
 
-session_reset();
-die();
-
-
-//function ruToEnLayout($text) : string {
-//    $ru = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'];
-//    $en = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
-//    return str_replace($ru, $en, $text);
-//}
-//
-//$telegram->sendMessage(['id' => $id,'text' => 'text']);
+function ruToEnLayout($text) : string {
+    $ru = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'];
+    $en = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
+    return str_replace($ru, $en, $text);
+}
