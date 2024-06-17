@@ -12,14 +12,18 @@ $message = $updates->getMessage()->get('text');
 
 $chat = $updates->getMessage()->get('chat');
 
-file_put_contents('output.txt', print_r($chat, 1));
+file_put_contents('output.txt', print_r($chat, 1), FILE_APPEND);
 
 $id = $chat->id;
 
-$response = $telegram->sendMessage([
-  'chat_id' => $id,
-  'text' => $message
-]);
+try {
+    $response = $telegram->sendMessage([
+      'chat_id' => $id,
+      'text' => $message
+    ]);
+} catch (\Telegram\Bot\Exceptions\TelegramSDKException $e) {
+    file_put_contents('output.txt', print_r($chat, 1), FILE_APPEND);
+}
 
 
 //use Telegram\Bot\Api;
