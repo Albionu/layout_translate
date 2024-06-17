@@ -1,4 +1,5 @@
 FROM php:8.3-apache
+ENV COMPOSER_ALLOW_SUPERUSER=1
 COPY . /var/www/html
 RUN php composer.phar install
 WORKDIR /var/www/html
