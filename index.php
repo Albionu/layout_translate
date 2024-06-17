@@ -9,9 +9,15 @@ $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 try {
     $updates = $telegram->getWebhookUpdate();
     
+    $message = $updates->getMessage();
+    
+    $chat = $message->get('chat');
+    
+    $id = $chat->id;
+    
     $response = $telegram->sendMessage([
       'chat_id' => 1311951933,
-      'text' => 'date ' . rand(0, PHP_INT_MAX),
+      'text' => $id,
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
@@ -25,13 +31,7 @@ file_put_contents('output.txt', "Request getten " . rand(0, PHP_INT_MAX) . "\n",
 session_reset();
 die();
 
-//use Telegram\Bot\Api;
-//
-//$telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
-////$result = $telegram->getUpdates();
-//
-//$id = $telegram->getChat()->id;
-//
+
 //function ruToEnLayout($text) : string {
 //    $ru = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю'];
 //    $en = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
