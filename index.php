@@ -10,7 +10,7 @@ $updates = $telegram->getWebhookUpdate();
 
 $message = $updates->getMessage()->get('text');
 
-$id = $updates->getChat()->get('chat_id');
+$id = $updates->getChat()->get('id');
 
 $response = $telegram->sendMessage([
   'chat_id' => $id,
