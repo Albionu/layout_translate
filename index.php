@@ -11,7 +11,7 @@ try {
     
     $response = $telegram->sendMessage([
       'chat_id' => 1311951933,
-      'text' => 'date ' . date('u'),
+      'text' => 'date ' . rand(0, PHP_INT_MAX),
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
@@ -20,7 +20,7 @@ try {
 } catch (Exception $e) {
     file_put_contents('output.txt', "Error: " . 'trash' . "\n", FILE_APPEND);
 }
-file_put_contents('output.txt', "Request getten " . date('u') . "\n", FILE_APPEND);
+file_put_contents('output.txt', "Request getten " . rand(0, PHP_INT_MAX) . "\n", FILE_APPEND);
 
 //use Telegram\Bot\Api;
 //
