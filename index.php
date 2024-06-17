@@ -12,6 +12,8 @@ $message = $updates->getMessage()->get('text');
 
 $chat = $updates->getMessage()->get('chat');
 
+file_put_contents('output.txt', print_r($chat, 1));
+
 $id = $chat->id;
 
 $response = $telegram->sendMessage([
