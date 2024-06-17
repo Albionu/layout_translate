@@ -1,5 +1,6 @@
 {
   "require": {
-    "telegramsdk/botapi": "^2.1"
+    "telegramsdk/botapi": "^2.1",
+    "irazasyed/telegram-bot-sdk": "^3.14"
   }
 }

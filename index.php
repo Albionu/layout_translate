@@ -2,27 +2,22 @@
 
 require_once  "vendor/autoload.php";
 
-use TelegramSDK\BotAPI\Telegram\{Bot, Update};
+use Telegram\Bot\Api;
 
-$bot = new Bot("7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM", Update::UPDATES_FROM_WEBHOOK);
+$telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 
-$update = $bot->updates();
+$updates = $telegram->getWebhookUpdate();
 
-if(isset($update->update_id)) {
-    
-    if(isset($update->message)) {
-        $chat = $update->getChat();
-        
-        $bot->copyMessage([
-          "chat_id" => $chat->id,
-          "from_chat_id" => $chat->id,
-          "message_id" => $update->getMessage()->message_id
-        ]);
-    }
-    
-} else {
-    echo "No updates from telegram where found.\n";
-}
+$message = $updates->getMessage();
+
+$id = $updates->getChat()->get('chat_id');
+
+
+$response = $telegram->sendMessage([
+  'chat_id' => $id,
+  'text' => 'Hello World'
+]);
+
 
 //use Telegram\Bot\Api;
 //
