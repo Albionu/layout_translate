@@ -11,7 +11,7 @@ try {
     
     $response = $telegram->sendMessage([
       'chat_id' => 1311951933,
-      'text' => 'text'
+      'text' => date(),
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
