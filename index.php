@@ -22,6 +22,9 @@ try {
 }
 file_put_contents('output.txt', "Request getten " . rand(0, PHP_INT_MAX) . "\n", FILE_APPEND);
 
+session_reset();
+die();
+
 //use Telegram\Bot\Api;
 //
 //$telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
