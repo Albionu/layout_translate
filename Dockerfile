@@ -1,6 +1,6 @@
 FROM php:8.3-apache
-RUN php composer.phar install
 COPY . /var/www/html
+RUN php composer.phar install
 WORKDIR /var/www/html
 VOLUME /var/www/html/vendor
 RUN chown -R www-data:www-data /var/www/html
