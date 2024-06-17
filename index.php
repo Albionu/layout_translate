@@ -8,13 +8,10 @@ $telegram = new Api('7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 
 try {
     $updates = $telegram->getWebhookUpdate();
-    $message = $updates->getMessage()->get('text');
-    $chat = $updates->getMessage()->get('chat');
-    $id = $chat->id;
     
     $response = $telegram->sendMessage([
-      'chat_id' => $id,
-      'text' => $message
+      'chat_id' => 1311951933,
+      'text' => 'text'
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
