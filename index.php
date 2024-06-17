@@ -19,7 +19,7 @@ try {
     
     $is_forwarded = false;
     
-    if($message->has('forward_from'))
+    if($message->has('forward_origin'))
         $is_forwarded = true;
     
     $response = $telegram->sendMessage([
