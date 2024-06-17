@@ -21,7 +21,7 @@ try {
 } catch (Exception $e) {
     file_put_contents('output.txt', "Error: " . 'вообще треш' . "\n", FILE_APPEND);
 }
-
+file_put_contents('output.txt', "Запросец пришёл " . date() . '\n', FILE_APPEND);
 
 //use Telegram\Bot\Api;
 //
