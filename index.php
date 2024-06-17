@@ -11,14 +11,20 @@ try {
     
     $message = $updates->getMessage();
     
-    $id = $message->get('chat')->id;
+    $chat = $message->get('chat');
+    
+    $text = $message->get('text');
+    
+    $id = $chat->id;
+    
+    $is_forwarded = false;
     
     if($message->has('forward_origin'))
         $is_forwarded = true;
     
     $response = $telegram->sendMessage([
       'chat_id' => $id,
-      'text' => ruToEnLayout($message->get('text'), $is_forwarded),
+      'text' => ruToEnLayout($text, $is_forwarded),
     ]);
     
     file_put_contents('output.txt', "Message sent successfully\n", FILE_APPEND);
