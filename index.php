@@ -54,7 +54,7 @@ function startFunc (object $telegram, int $ChatId) : void {
 }
 
 
-
+die();
 
 //$ru = [
 //  '`','q','w','e','r','t','y','u','i','o','p','[',']',
