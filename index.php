@@ -50,7 +50,7 @@ try {
 
 file_put_contents('output.txt', "Request getten " . rand(0, PHP_INT_MAX) . "\n", FILE_APPEND);
 
-function ruToEnLayout(string $text, array $map) : string {
+function ruToEnLayout (string $text, array $map) : string {
     $res = '';
     
     foreach (mb_str_split($text) as $char)
@@ -59,7 +59,7 @@ function ruToEnLayout(string $text, array $map) : string {
     return $res;
 }
 
-function startFunc (object $telegram,int $ChatId) : void {
+function startFunc (object $telegram, int $ChatId) : void {
     $telegram->sendMessage([
       'chat_id' => $ChatId,
       'text' => 'Отправьте мне сообщение для начала',
