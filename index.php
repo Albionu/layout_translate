@@ -1,10 +1,11 @@
 <?php
 
-require_once  "vendor/autoload.php";
+require_once  'vendor/autoload.php';
+require_once  'src/switcher.php';
 
 use Telegram\Bot\Api;
 
-$api = new Api(token: '7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
+$api = new Api(token: getenv('TELEGRAM_BOT_TOKEN'));
 
 $message = $api->getWebhookUpdate()->getMessage();
 
@@ -12,32 +13,9 @@ $chat = $message->get('chat');
 
 $text = $message->get('text');
 
-$response = $api->sendMessage([
+$api->sendMessage([
   'chat_id' => $chat->id,
   'text' => ($text == '/start')?'Отправьте мне сообщение для начала':switcher($text, !$message->has('forward_origin')),
 ]);
-
-function switcher(string $text = "", bool $reverse = false) : string
-{
-    $converter = [
-      'f' => 'а',',' => 'б','d' => 'в',	'u' => 'г',	'l' => 'д',	't' => 'е',	'`' => 'ё',
-      ';' => 'ж','p' => 'з','b' => 'и',	'q' => 'й',	'r' => 'к',	'k' => 'л',	'v' => 'м',
-      'y' => 'н','j' => 'о','g' => 'п',	'h' => 'р',	'c' => 'с',	'n' => 'т',	'e' => 'у',
-      'a' => 'ф','[' => 'х','w' => 'ц',	'x' => 'ч',	'i' => 'ш',	'o' => 'щ',	'm' => 'ь',
-      's' => 'ы',']' => 'ъ',"'" => "э",	'.' => 'ю',	'z' => 'я',
-
-      'F' => 'А','<' => 'Б','D' => 'В',	'U' => 'Г',	'L' => 'Д',	'T' => 'Е',	'~' => 'Ё',
-      ':' => 'Ж','P' => 'З','B' => 'И',	'Q' => 'Й',	'R' => 'К',	'K' => 'Л',	'V' => 'М',
-      'Y' => 'Н','J' => 'О','G' => 'П',	'H' => 'Р',	'C' => 'С',	'N' => 'Т',	'E' => 'У',
-      'A' => 'Ф','{' => 'Х','W' => 'Ц',	'X' => 'Ч',	'I' => 'Ш',	'O' => 'Щ',	'M' => 'Ь',
-      'S' => 'Ы','}' => 'Ъ','"' => 'Э',	'>' => 'Ю',	'Z' => 'Я',
-
-      '@' => '"','#' => '№','$' => ';',	'^' => ':',	'&' => '?',	'/' => '.',	'?' => ',',
-    ];
-
-    if ($reverse) $converter = array_flip($converter);
-
-    return strtr($text, $converter);
-}
 
 die();
