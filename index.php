@@ -4,29 +4,18 @@ require_once  "vendor/autoload.php";
 
 use Telegram\Bot\Api;
 
-$telegram = new Api(token: '7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
+$api = new Api(token: '7402378731:AAF_-wl_byFnbHWCS3-f-OzyfJkBrrHUvDM');
 
-$message = $telegram->getWebhookUpdate()->getMessage();
+$message = $api->getWebhookUpdate()->getMessage();
 
 $chat = $message->get('chat');
 
 $text = $message->get('text');
 
-$id = $chat->id;
-
-if ($text == '/start') {startFunc($telegram, $id); die();}
-
-$response = $telegram->sendMessage([
-  'chat_id' => $id,
-  'text' => switcher($text, $message->has('forward_origin')),
+$response = $api->sendMessage([
+  'chat_id' => $chat->id,
+  'text' => ($text == '/start')?'Отправьте мне сообщение для начала':switcher($text, !$message->has('forward_origin')),
 ]);
-
-function startFunc (object $telegram, int $ChatId) : void {
-    $telegram->sendMessage([
-      'chat_id' => $ChatId,
-      'text' => 'Отправьте мне сообщение для начала',
-    ]);
-}
 
 function switcher(string $text = "", bool $reverse = false) : string
 {
