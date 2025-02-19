@@ -1,5 +1,4 @@
-FROM php:8.3-apache
-ENV COMPOSER_ALLOW_SUPERUSER=1
+FROM php:8.4-apache
 COPY . /var/www/html
 WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y git
